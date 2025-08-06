@@ -348,7 +348,31 @@ Based on model outputs, patients are categorized into four risk levels:
 * **Deep Learning Expansion**: Explore advanced neural network architectures for pattern recognition
 * **Clinical Integration**: Develop API endpoints for electronic health record system integration
 
-## Project Structure
+## 📊 **Enhanced Project Structure**
+
+```
+Stroke-prediction/
+├── 📁 jupyter_notebooks/
+│   ├── 📄 01-Data_Acquisition_and_Preprocessing.ipynb (Kaggle Hub + Advanced Preprocessing)
+│   ├── 📄 02-Exploratory_Data_Analysis.ipynb (Comprehensive EDA + Clinical Insights)
+│   ├── 📄 03-Statistical_Analysis.ipynb (Chi-square Testing + Effect Sizes)
+│   ├── 📄 04-Machine_Learning_Modeling.ipynb (LightGBM + Class Balancing)
+│   ├── 📄 Notebook_Template.ipynb
+│   └── 📄 stroke-prediction.ipynb (Original comprehensive analysis)
+├── 📄 README.md (This comprehensive documentation)
+├── 📄 requirements.txt (Enhanced with new dependencies)
+├── 📄 setup.sh (Deployment configuration)
+└── 📄 Procfile (Heroku deployment)
+```
+
+### **📚 Multi-Notebook Architecture Benefits**
+
+✅ **Modular Analysis**: Each notebook focuses on specific analytical phases  
+✅ **Professional Organization**: Follows industry best practices for large projects  
+✅ **Assessment Clarity**: Easy to evaluate individual components  
+✅ **Collaborative Development**: Multiple team members can work on different phases  
+✅ **Version Control**: Better tracking of changes in specific analysis areas  
+✅ **Reusability**: Individual notebooks can be reused for other medical datasets  
 
 ### Inputs
 * **Primary Dataset**: `stroke.csv` with comprehensive patient records
@@ -361,10 +385,31 @@ Based on model outputs, patients are categorized into four risk levels:
 * **Clinical Documentation**: Comprehensive analysis report with recommendations
 * **Visualization Package**: Charts and graphs supporting key findings
 
-### Jupyter Notebooks
-* **Main Analysis**: `stroke-prediction.ipynb` - Complete analysis pipeline with professional documentation
-* **Model Development**: Comprehensive machine learning implementation with cross-validation
-* **Statistical Analysis**: Hypothesis testing and validation procedures
+### **🔬 Jupyter Notebook Workflow**
+
+1. **📊 Data Acquisition & Preprocessing** (`01-Data_Acquisition_and_Preprocessing.ipynb`)
+   - Kaggle Hub automated data download
+   - Advanced data quality validation
+   - Intelligent missing value imputation
+   - Clinical-grade preprocessing pipeline
+
+2. **📈 Exploratory Data Analysis** (`02-Exploratory_Data_Analysis.ipynb`)
+   - Comprehensive statistical profiling
+   - Advanced visualization suite
+   - Clinical pattern discovery
+   - Feature relationship mapping
+
+3. **🔬 Statistical Analysis** (`03-Statistical_Analysis.ipynb`)
+   - Chi-square hypothesis testing
+   - Effect size calculations (Cramér's V)
+   - Clinical significance validation
+   - Statistical power analysis
+
+4. **🚀 Machine Learning Modeling** (`04-Machine_Learning_Modeling.ipynb`)
+   - Intelligent missing data handling
+   - LightGBM optimization
+   - Class imbalance strategies
+   - Comprehensive model evaluation
 
 ## Installation and Setup
 
