@@ -109,51 +109,27 @@ def load_data():
     """Load and prepare the stroke prediction dataset"""
     import os
     
-    # Try multiple possible paths for data files
-    possible_paths = [
-        # Try relative to current script location
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'datasets'),
-        # Try relative to current working directory
-        'datasets',
-        # Try parent directory datasets
-        '../datasets',
-        # Try direct path from root
-        './datasets'
-    ]
+    # Primary path for Heroku deployment (from app root)
+    datasets_dir = 'datasets'
     
-    data_found = False
-    datasets_dir = None
-    
-    for path in possible_paths:
-        if os.path.exists(path):
-            datasets_dir = path
-            data_found = True
-            break
-    
-    if not data_found:
-        st.error("❌ No datasets directory found in any expected location!")
-        st.error(f"Tried paths: {possible_paths}")
-        st.error(f"Current working directory: {os.getcwd()}")
-        return None
+    # Check if we're running from streamlit_dashboard subdirectory
+    if not os.path.exists(datasets_dir):
+        datasets_dir = '../datasets'
     
     try:
         # Try to load cleaned data first
         cleaned_path = os.path.join(datasets_dir, 'stroke_cleaned.csv')
         if os.path.exists(cleaned_path):
             df = pd.read_csv(cleaned_path)
-            st.success(f"✅ Loaded cleaned data from: {cleaned_path}")
             return df
-        else:
-            st.warning(f"⚠️ Cleaned data not found at: {cleaned_path}")
     except Exception as e:
-        st.warning(f"⚠️ Error loading cleaned data: {e}")
+        st.error(f"Error loading cleaned data: {e}")
     
     try:
         # Fallback to original data
         original_path = os.path.join(datasets_dir, 'Stroke.csv')
         if os.path.exists(original_path):
             df = pd.read_csv(original_path)
-            st.info(f"ℹ️ Loaded original data from: {original_path}")
             
             # Basic preprocessing
             if 'id' in df.columns:
@@ -188,12 +164,21 @@ def load_data():
 
             return df
         else:
-            st.error(f"❌ Original data not found at: {original_path}")
+            st.error(f"Data file not found at: {original_path}")
             
     except Exception as e:
-        st.error(f"❌ Error loading original data: {e}")
+        st.error(f"Error loading original data: {e}")
     
-    st.error("❌ Could not load any data files!")
+    # If all else fails, show what's available
+    st.error("Unable to load data files. Available files:")
+    try:
+        for root, dirs, files in os.walk('.'):
+            if 'Stroke.csv' in files or 'stroke_cleaned.csv' in files:
+                st.error(f"Found data in: {root}")
+                st.error(f"Files: {files}")
+    except:
+        pass
+        
     return None
 
 
@@ -284,25 +269,6 @@ def predict_stroke_risk(age, gender, hypertension, heart_disease,
 
 def main():
     """Main Streamlit application"""
-    
-    # Debug information for Heroku deployment
-    import os
-    st.write("🔍 **Debug Information:**")
-    st.write(f"Current working directory: `{os.getcwd()}`")
-    st.write(f"Files in current directory: `{os.listdir('.')}`")
-    
-    # Check if datasets directory exists
-    datasets_path = 'datasets'
-    if os.path.exists(datasets_path):
-        st.write(f"✅ Datasets directory found: `{datasets_path}`")
-        st.write(f"Files in datasets: `{os.listdir(datasets_path)}`")
-    else:
-        st.write(f"❌ Datasets directory not found at: `{datasets_path}`")
-        # Try parent directory
-        parent_datasets = '../datasets'
-        if os.path.exists(parent_datasets):
-            st.write(f"✅ Found datasets in parent: `{parent_datasets}`")
-            st.write(f"Files: `{os.listdir(parent_datasets)}`")
 
     # Main Header
     st.markdown("""
