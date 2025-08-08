@@ -14,26 +14,14 @@ imbalanced-learn==0.11.0
 # Statistical Analysis
 scipy==1.11.3
 
-# Data Acquisition
-kagglehub==0.2.5
-
 # Dashboard Development
 streamlit==1.40.2
 
 # Feature Engineering
 feature-engine==1.6.1
 
-# Data Profiling (Optional - can remove before deployment)
-ydata-profiling==4.12.0
-ppscore==1.1.0
-yellowbrick==1.5
-
 # Visualization Support
 Pillow==10.0.1
 kaleido==0.2.1
-
-# Jupyter Notebook Support
-ipykernel==6.25.2
-jupyter==1.0.0
 
 # Additional Utilities
