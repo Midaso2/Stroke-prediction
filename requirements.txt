@@ -1,6 +1,6 @@
 # Essential packages for Streamlit deployment
 streamlit==1.40.2
-pandas==2.1.1
+pandas==2.2.3
 numpy==1.26.1
 plotly==5.17.0
 matplotlib==3.8.0

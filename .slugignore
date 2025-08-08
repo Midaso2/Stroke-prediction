@@ -9,7 +9,6 @@ images/*
 !README.md
 !HEROKU_DEPLOYMENT.md
 .flake8
-.python-version
 .gitignore
 __pycache__/*
 *.pyc
