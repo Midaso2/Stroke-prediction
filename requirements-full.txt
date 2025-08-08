@@ -1,0 +1,42 @@
+# Full development requirements (for local development)
+# Use this for local development with all ML capabilities
+
+# Core Data Science Libraries
+numpy==1.26.1
+pandas==2.1.1
+matplotlib==3.8.0
+seaborn==0.13.2
+plotly==5.17.0
+
+# Machine Learning Libraries
+scikit-learn==1.3.1
+xgboost==1.7.6
+lightgbm==4.1.0
+imbalanced-learn==0.11.0
+
+# Statistical Analysis
+scipy==1.11.3
+
+# Dashboard Development
+streamlit==1.40.2
+
+# Feature Engineering
+feature-engine==1.6.1
+
+# Data Profiling (Optional - can remove before deployment)
+ydata-profiling==4.12.0
+ppscore==1.1.0
+yellowbrick==1.5
+
+# Visualization Support
+Pillow==10.0.1
+kaleido==0.2.1
+
+# Jupyter Notebook Support
+ipykernel==6.25.2
+jupyter==1.0.0
+
+# Data Acquisition
+kagglehub==0.2.5
+
+# Additional Utilities
