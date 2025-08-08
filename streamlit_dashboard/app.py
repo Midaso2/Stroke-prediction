@@ -107,14 +107,54 @@ st.markdown("""
 @st.cache_data
 def load_data():
     """Load and prepare the stroke prediction dataset"""
+    import os
+    
+    # Try multiple possible paths for data files
+    possible_paths = [
+        # Try relative to current script location
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'datasets'),
+        # Try relative to current working directory
+        'datasets',
+        # Try parent directory datasets
+        '../datasets',
+        # Try direct path from root
+        './datasets'
+    ]
+    
+    data_found = False
+    datasets_dir = None
+    
+    for path in possible_paths:
+        if os.path.exists(path):
+            datasets_dir = path
+            data_found = True
+            break
+    
+    if not data_found:
+        st.error("❌ No datasets directory found in any expected location!")
+        st.error(f"Tried paths: {possible_paths}")
+        st.error(f"Current working directory: {os.getcwd()}")
+        return None
+    
     try:
         # Try to load cleaned data first
-        df = pd.read_csv('../datasets/stroke_cleaned.csv')
-        return df
-    except Exception:
-        try:
-            # Fallback to original data
-            df = pd.read_csv('../datasets/Stroke.csv')
+        cleaned_path = os.path.join(datasets_dir, 'stroke_cleaned.csv')
+        if os.path.exists(cleaned_path):
+            df = pd.read_csv(cleaned_path)
+            st.success(f"✅ Loaded cleaned data from: {cleaned_path}")
+            return df
+        else:
+            st.warning(f"⚠️ Cleaned data not found at: {cleaned_path}")
+    except Exception as e:
+        st.warning(f"⚠️ Error loading cleaned data: {e}")
+    
+    try:
+        # Fallback to original data
+        original_path = os.path.join(datasets_dir, 'Stroke.csv')
+        if os.path.exists(original_path):
+            df = pd.read_csv(original_path)
+            st.info(f"ℹ️ Loaded original data from: {original_path}")
+            
             # Basic preprocessing
             if 'id' in df.columns:
                 df = df.drop('id', axis=1)
@@ -147,9 +187,14 @@ def load_data():
                 df['bmi'] = df['bmi'].fillna(df['bmi'].median())
 
             return df
-        except Exception as e:
-            st.error(f"Error loading data: {e}")
-            return None
+        else:
+            st.error(f"❌ Original data not found at: {original_path}")
+            
+    except Exception as e:
+        st.error(f"❌ Error loading original data: {e}")
+    
+    st.error("❌ Could not load any data files!")
+    return None
 
 
 @st.cache_data
@@ -239,6 +284,25 @@ def predict_stroke_risk(age, gender, hypertension, heart_disease,
 
 def main():
     """Main Streamlit application"""
+    
+    # Debug information for Heroku deployment
+    import os
+    st.write("🔍 **Debug Information:**")
+    st.write(f"Current working directory: `{os.getcwd()}`")
+    st.write(f"Files in current directory: `{os.listdir('.')}`")
+    
+    # Check if datasets directory exists
+    datasets_path = 'datasets'
+    if os.path.exists(datasets_path):
+        st.write(f"✅ Datasets directory found: `{datasets_path}`")
+        st.write(f"Files in datasets: `{os.listdir(datasets_path)}`")
+    else:
+        st.write(f"❌ Datasets directory not found at: `{datasets_path}`")
+        # Try parent directory
+        parent_datasets = '../datasets'
+        if os.path.exists(parent_datasets):
+            st.write(f"✅ Found datasets in parent: `{parent_datasets}`")
+            st.write(f"Files: `{os.listdir(parent_datasets)}`")
 
     # Main Header
     st.markdown("""
