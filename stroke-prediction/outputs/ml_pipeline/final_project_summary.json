@@ -1,0 +1,53 @@
+{
+  "project_info": {
+    "title": "Healthcare AI: Stroke Prediction Analytics",
+    "description": "Comprehensive ML solution for stroke risk assessment",
+    "completion_date": "2025-08-12",
+    "dataset_size": 5110,
+    "test_size": 1022
+  },
+  "model_performance": {
+    "algorithm": "Random Forest Classifier",
+    "accuracy": 0.9354207436399217,
+    "precision": 0.1,
+    "recall": 0.04,
+    "f1_score": 0.05714285714285714,
+    "roc_auc": 0.7934362139917694,
+    "specificity": 0.9814814814814815
+  },
+  "clinical_metrics": {
+    "true_positives": 2,
+    "true_negatives": 954,
+    "false_positives": 18,
+    "false_negatives": 48,
+    "sensitivity": 0.04,
+    "specificity": 0.9814814814814815,
+    "ppv": 0.1,
+    "npv": 0.9520958083832335
+  },
+  "risk_stratification": {
+    "total_patients": 1022,
+    "very_low_risk": 761,
+    "low_risk": 163,
+    "moderate_risk": 45,
+    "high_risk": 0,
+    "very_high_risk": 53,
+    "high_risk_total": 53,
+    "high_risk_percentage": 5.185909980430528,
+    "high_risk_stroke_rate": 7.547169811320755
+  },
+  "statistical_validation": {
+    "chi_square_age": 322.3091510345357,
+    "p_value_age": 1.475280936277088e-69,
+    "chi_square_hypertension": 81.6053682482931,
+    "p_value_hypertension": 1.661621901511823e-19,
+    "all_tests_significant": true
+  },
+  "key_findings": [
+    "Model achieves 93.5% accuracy with 4.0% recall",
+    "Age is the dominant risk factor (59.4% importance)",
+    "Modifiable factors contribute 37.8% of prediction power",
+    "High-risk patients (5.2%) identified",
+    "Statistical validation confirms significant associations"
+  ]
+}

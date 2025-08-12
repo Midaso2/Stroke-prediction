@@ -1,0 +1,19 @@
+{
+  "Random Forest": {
+    "n_estimators": 200,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "max_depth": null
+  },
+  "Gradient Boosting": {
+    "n_estimators": 200,
+    "min_samples_split": 10,
+    "max_depth": 7,
+    "learning_rate": 0.2
+  },
+  "K-Nearest Neighbors": {
+    "weights": "distance",
+    "n_neighbors": 9,
+    "metric": "manhattan"
+  }
+}
