@@ -1,0 +1,9 @@
+{
+  "total_patients": 5110,
+  "stroke_cases": 249,
+  "stroke_rate": 0.0487279843444227,
+  "age_correlation": 0.24525734617097475,
+  "glucose_correlation": 0.13194544082571016,
+  "high_risk_patients": 129,
+  "high_risk_stroke_rate": 0.20930232558139536
+}

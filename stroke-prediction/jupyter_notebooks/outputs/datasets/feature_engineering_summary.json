@@ -1,0 +1,13 @@
+{
+  "total_features": 27,
+  "numerical_features": 3,
+  "categorical_features_original": 7,
+  "training_samples": 3066,
+  "validation_samples": 1022,
+  "test_samples": 1022,
+  "stroke_rate_train": 0.048597521200260924,
+  "stroke_rate_val": 0.04892367906066536,
+  "stroke_rate_test": 0.04892367906066536,
+  "missing_values_imputed": 201,
+  "new_features_created": 6
+}

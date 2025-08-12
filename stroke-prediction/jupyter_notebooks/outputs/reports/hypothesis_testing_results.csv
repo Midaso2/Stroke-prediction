@@ -1,0 +1,6 @@
+Hypothesis,Statistical_Test,P_Value,Significant,Significance_Level
+H1: Age-Stroke Correlation,Spearman Correlation,2.1925149702778738e-73,True,***
+H2: Hypertension-Stroke Association,Chi-square Test,1.661621901511823e-19,True,***
+H3: Heart Disease-Stroke Risk,Mann-Whitney U Test,2.6255159268144732e-22,True,***
+H4: BMI Categories-Stroke Risk,Kruskal-Wallis Test,1.0809169672662146e-09,True,***
+H5: Gender-Stroke Association,Chi-square Test,0.7895490538408245,False,ns
